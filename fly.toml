@@ -12,7 +12,7 @@ processes = []
   auto_rollback = true
 
 [processes]
-  app = "run --allow-net --allow-read ./main.ts"
+  app = "run --allow-net --allow-read --allow-env ./main.ts"
 
 [[services]]
   http_checks = []
