@@ -3,7 +3,7 @@ import { serve } from "https://deno.land/std@0.159.0/http/server.ts";
 import { parseURL, connect } from "https://deno.land/x/redis/mod.ts";
 import { fetchAllGuildMembers } from "./fetchAllGuildMembers.ts";
 
-const redisUrl = config().REDIS_URL;
+const redisUrl = Deno.env.get("REDIS_URL") || config().REDIS_URL;
 const connectionOptions = parseURL(redisUrl);
 
 const redis = await connect(connectionOptions);

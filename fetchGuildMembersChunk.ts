@@ -1,6 +1,8 @@
 import { config } from "https://deno.land/x/dotenv/mod.ts";
-const discordBotToken = config().DISCORD_BOT_TOKEN;
-const discordGuildId = config().DISCORD_GUILD_ID;
+const discordBotToken =
+  Deno.env.get("DISCORD_BOT_TOKEN") || config().DISCORD_BOT_TOKEN;
+const discordGuildId =
+  Deno.env.get("DISCORD_GUILD_ID") || config().DISCORD_GUILD_ID;
 
 export function fetchGuildMembersChunk(lastUserId?: string) {
   const authHeaders = {
