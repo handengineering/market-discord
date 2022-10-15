@@ -13,7 +13,7 @@ const allGuildMembers = await fetchAllGuildMembers();
 setInterval(async () => {
   console.log("GETTING");
   await redis.set("discordGuildMembers", allGuildMembers);
-}, 10000);
+}, 60000);
 
 const port = 8081;
 
