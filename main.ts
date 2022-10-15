@@ -13,8 +13,6 @@ const allGuildMembers = await fetchAllGuildMembers();
 
 const allGuildMembersJson: DiscordGuildMember[] = JSON.parse(allGuildMembers);
 
-console.log(allGuildMembersJson);
-
 const discordGuildMemberIds = allGuildMembersJson.map(
   (guildMember) => guildMember.user.id
 );
