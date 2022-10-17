@@ -9,16 +9,17 @@ const connectionOptions = parseURL(redisUrl);
 
 const redis = await connect(connectionOptions);
 
-const allGuildMembers = await fetchAllGuildMembers();
-
-const allGuildMembersJson: DiscordGuildMember[] = JSON.parse(allGuildMembers);
-
-const discordGuildMemberIds = allGuildMembersJson.map(
-  (guildMember) => guildMember.user.id
-);
-
 setInterval(async () => {
+  const allGuildMembers = await fetchAllGuildMembers();
+
+  const allGuildMembersJson: DiscordGuildMember[] = JSON.parse(allGuildMembers);
+
+  const discordGuildMemberIds = allGuildMembersJson.map(
+    (guildMember) => guildMember.user.id
+  );
+
   console.log("GETTING");
+  console.log(`Length: ${discordGuildMemberIds.length}`);
   await redis.set(
     "discordGuildMemberIds",
     JSON.stringify(discordGuildMemberIds)
